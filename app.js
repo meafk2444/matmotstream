@@ -159,25 +159,19 @@
   }
 
   // ---------- Détermination du "prochain" ----------
-  // Priorité : parmi les personnes non cochées, celle dont le créneau
-  // commence le plus tôt ; en cas d'égalité, celle marquée "priority".
+  // Priorité : les personnes marquées "priority" passent toujours avant
+  // les autres. À égalité de priorité, celle dont le créneau se termine
+  // le plus tôt passe en premier (c'est elle qui presse le plus).
   function computeNext(blocks) {
-    var now = nowInRangeMinutes();
     var candidates = blocks.filter(function (b) { return !doneSet[b.pseudo]; });
     if (candidates.length === 0) return null;
 
-    function pickBest(list) {
-      list = list.slice().sort(function (a, b) {
-        if (a.start !== b.start) return a.start - b.start;
-        if (a.isPriority !== b.isPriority) return a.isPriority ? -1 : 1;
-        return 0;
-      });
-      return list[0];
-    }
-
-    var upcoming = candidates.filter(function (b) { return b.end >= now; });
-    if (upcoming.length > 0) return pickBest(upcoming);
-    return pickBest(candidates);
+    candidates = candidates.slice().sort(function (a, b) {
+      if (a.isPriority !== b.isPriority) return a.isPriority ? -1 : 1;
+      if (a.end !== b.end) return a.end - b.end;
+      return a.start - b.start;
+    });
+    return candidates[0];
   }
 
   // ---------- Rendu ----------
@@ -310,19 +304,17 @@
         render();
       });
 
-      var chip = document.createElement("span");
-      chip.className = "hour-chip";
-      chip.textContent = formatHoursLabel(inst);
-
       var info = document.createElement("div");
       info.className = "person-info";
       info.innerHTML =
         '<div class="person-pseudo">' + escapeHtml(inst.pseudo) + (inst.isPriority ? ' <span class="star">★</span>' : '') + '</div>' +
-        '<div class="person-time">Entre ' + escapeHtml(inst.startLabel) + ' et ' + escapeHtml(inst.endLabel) +
-        (inst.slotCount > 1 ? ' · ' + inst.slotCount + ' heures' : '') + '</div>' +
+        '<div class="person-meta">' +
+        '<span class="hour-chip">' + escapeHtml(formatHoursLabel(inst)) + '</span>' +
+        '<span class="person-time">Entre ' + escapeHtml(inst.startLabel) + ' et ' + escapeHtml(inst.endLabel) +
+        (inst.slotCount > 1 ? ' · ' + inst.slotCount + ' heures' : '') + '</span>' +
+        '</div>' +
         (inst.comment ? '<div class="person-comment">' + escapeHtml(inst.comment) + '</div>' : '');
 
-      row.appendChild(chip);
       row.appendChild(chk);
       row.appendChild(info);
       tracks.appendChild(row);
@@ -338,15 +330,22 @@
 
       var item = document.createElement("div");
       item.className = "list-item" + (done ? " is-done" : "");
+      item.setAttribute("role", "checkbox");
+      item.setAttribute("aria-checked", done ? "true" : "false");
+      item.tabIndex = 0;
 
-      var chk = document.createElement("button");
+      var chk = document.createElement("span");
       chk.className = "chk";
-      chk.type = "button";
-      chk.setAttribute("aria-label", "Marquer " + inst.pseudo + " comme " + (done ? "non passé" : "passé"));
+      chk.setAttribute("aria-hidden", "true");
       chk.textContent = done ? "✓" : "";
-      chk.addEventListener("click", function () {
+
+      function toggle() {
         doneSet[inst.pseudo] = !doneSet[inst.pseudo];
         render();
+      }
+      item.addEventListener("click", toggle);
+      item.addEventListener("keydown", function (e) {
+        if (e.key === "Enter" || e.key === " ") { e.preventDefault(); toggle(); }
       });
 
       var info = document.createElement("div");
@@ -354,7 +353,7 @@
       info.innerHTML =
         '<div class="list-top-row">' +
         '<span class="person-pseudo">' + escapeHtml(inst.pseudo) + (inst.isPriority ? ' <span class="star">★</span>' : '') + '</span>' +
-        '<span class="hour-chip" style="--hour-color:' + (HOUR_COLORS[inst.hourLabel] || '#7C8896') + '">' + formatHoursLabel(inst) + '</span>' +
+        '<span class="hour-chip" style="--hour-color:' + (HOUR_COLORS[inst.hourLabel] || '#7C8896') + '">' + escapeHtml(formatHoursLabel(inst)) + '</span>' +
         '</div>' +
         (inst.comment ? '<div class="person-comment list-comment">' + escapeHtml(inst.comment) + '</div>' : '');
 
