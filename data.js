@@ -9,7 +9,7 @@
 window.SCHEDULE_DATA = {
 
   // Titre affiché en haut de la page
-  eventTitle: "Planning de la soirée",
+  eventTitle: "Horaire",
 
   /* -------------------------------------------------------------------
      PERSONNES
