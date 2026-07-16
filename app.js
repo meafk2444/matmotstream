@@ -216,7 +216,7 @@
       '<p class="next-time">Entre ' + escapeHtml(nextInst.startLabel) + ' et ' + escapeHtml(nextInst.endLabel) + '</p>' +
       (nextInst.comment ? '<p class="next-comment">' + escapeHtml(nextInst.comment) + '</p>' : '') +
       '</div>' +
-      '<button class="next-check" type="button">Marquer passé ✓</button>';
+      '<button class="next-check" type="button">Done ✓</button>';
 
     panel.querySelector(".next-check").addEventListener("click", function () {
       doneSet[nextInst.pseudo] = true;
