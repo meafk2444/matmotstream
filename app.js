@@ -181,8 +181,8 @@
     var totalPeople = DATA.people.length;
     var doneCount = Object.keys(doneSet).filter(function (k) { return doneSet[k]; }).length;
 
-    document.title = DATA.eventTitle || "Planning de la soirée";
-    document.getElementById("event-title").textContent = DATA.eventTitle || "Planning de la soirée";
+    document.title = DATA.eventTitle || "Horaire";
+    document.getElementById("event-title").textContent = DATA.eventTitle || "Horaire";
     document.getElementById("counter").innerHTML =
       "<b>" + doneCount + "</b> / " + totalPeople + " passés";
 
