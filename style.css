@@ -1,0 +1,534 @@
+:root{
+  --bg-ink:#0B0F16;
+  --bg-panel:#151B25;
+  --bg-panel-2:#1C2430;
+  --line:#2A3442;
+  --line-soft:#1F2733;
+  --text:#F2F5F9;
+  --text-muted:#8B98AA;
+
+  --amber:#FFC168;
+  --amber-soft:#4A3820;
+  --teal:#5CD6B8;
+  --teal-dim:#173330;
+  --coral:#FF6B7A;
+  --coral-dim:#3A1E24;
+  --violet:#B98CFF;
+
+  --font-display:'Space Grotesk', sans-serif;
+  --font-body:'Inter', sans-serif;
+  --font-mono:'JetBrains Mono', monospace;
+}
+
+*{box-sizing:border-box;}
+
+html,body{
+  margin:0;
+  padding:0;
+  background:
+    radial-gradient(circle at 15% 0%, rgba(185,140,255,.08), transparent 45%),
+    radial-gradient(circle at 85% 15%, rgba(255,193,104,.07), transparent 40%),
+    var(--bg-ink);
+  color:var(--text);
+  font-family:var(--font-body);
+  -webkit-font-smoothing:antialiased;
+}
+
+body{
+  min-height:100vh;
+  padding:24px 20px 80px;
+}
+
+.wrap{
+  max-width:960px;
+  margin:0 auto;
+}
+
+/* ---------- Top bar ---------- */
+.topbar{
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  margin-bottom:28px;
+  padding-bottom:18px;
+  border-bottom:1px solid var(--line);
+}
+
+.topbar h1{
+  font-family:var(--font-display);
+  font-size:28px;
+  font-weight:700;
+  letter-spacing:-0.01em;
+  margin:0 0 6px;
+  background:linear-gradient(90deg, var(--amber), var(--violet));
+  -webkit-background-clip:text;
+  background-clip:text;
+  color:transparent;
+}
+
+.topbar .subline{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--text-muted);
+  display:flex;
+  gap:14px;
+  align-items:center;
+}
+
+.clock{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--amber);
+  letter-spacing:0.02em;
+}
+
+.topbar-right{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.counter{
+  font-family:var(--font-mono);
+  font-size:13px;
+  color:var(--teal);
+  background:var(--teal-dim);
+  border:1px solid rgba(92,214,184,.35);
+  padding:7px 12px;
+  border-radius:7px;
+}
+
+.counter b{font-weight:700;}
+
+.reset-btn{
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--text-muted);
+  background:var(--bg-panel);
+  border:1px solid var(--line);
+  padding:8px 14px;
+  border-radius:7px;
+  cursor:pointer;
+  transition:border-color .15s ease, color .15s ease, transform .1s ease, background .15s ease;
+}
+.reset-btn:hover{
+  border-color:var(--coral);
+  color:var(--coral);
+  background:var(--coral-dim);
+  transform:translateY(-1px);
+}
+.reset-btn:active{transform:translateY(0);}
+.reset-btn:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+
+/* ---------- "Prochain" hero ---------- */
+.next-panel{
+  position:relative;
+  background:linear-gradient(135deg, rgba(255,193,104,.09), rgba(185,140,255,.06)), var(--bg-panel);
+  border:1px solid var(--line);
+  border-left:4px solid var(--amber);
+  border-radius:12px;
+  padding:20px 24px;
+  margin-bottom:28px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:16px;
+  flex-wrap:wrap;
+  box-shadow:0 8px 24px -12px rgba(255,193,104,.25);
+  transition:box-shadow .2s ease;
+}
+.next-panel:hover{box-shadow:0 10px 30px -10px rgba(255,193,104,.35);}
+
+.next-panel.all-done{
+  border-left-color:var(--teal);
+  box-shadow:0 8px 24px -12px rgba(92,214,184,.25);
+}
+.next-panel.all-done:hover{box-shadow:0 10px 30px -10px rgba(92,214,184,.35);}
+
+.next-label{
+  font-family:var(--font-mono);
+  font-size:11px;
+  letter-spacing:0.14em;
+  text-transform:uppercase;
+  color:var(--amber);
+  margin:0 0 6px;
+}
+.next-panel.all-done .next-label{color:var(--teal);}
+
+.next-name{
+  font-family:var(--font-display);
+  font-size:34px;
+  font-weight:700;
+  line-height:1.05;
+  margin:0;
+  letter-spacing:-0.01em;
+}
+
+.next-time{
+  font-family:var(--font-mono);
+  font-size:15px;
+  color:var(--text-muted);
+  margin-top:5px;
+}
+
+.next-comment{
+  font-size:13px;
+  color:var(--text-muted);
+  margin-top:8px;
+  max-width:420px;
+}
+
+.next-check{
+  font-family:var(--font-mono);
+  font-size:12px;
+  background:linear-gradient(135deg, var(--amber), #ff9d5c);
+  color:#231502;
+  border:none;
+  padding:11px 18px;
+  border-radius:8px;
+  font-weight:700;
+  cursor:pointer;
+  white-space:nowrap;
+  transition:transform .12s ease, box-shadow .15s ease, filter .15s ease;
+  box-shadow:0 4px 14px -4px rgba(255,193,104,.5);
+}
+.next-check:hover{
+  transform:translateY(-2px);
+  box-shadow:0 8px 20px -6px rgba(255,193,104,.65);
+  filter:brightness(1.06);
+}
+.next-check:active{transform:translateY(0) scale(.98);}
+.next-check:focus-visible{outline:2px solid var(--text);outline-offset:2px;}
+
+/* ---------- Board (tabs + timeline/liste) ---------- */
+.board{
+  background:var(--bg-panel);
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:16px 20px 24px;
+  position:relative;
+}
+
+.view-tabs{
+  display:flex;
+  gap:8px;
+  margin-bottom:18px;
+}
+
+.view-tab{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.06em;
+  text-transform:uppercase;
+  color:var(--text-muted);
+  background:var(--bg-panel-2);
+  border:1px solid var(--line);
+  padding:8px 16px;
+  border-radius:7px;
+  cursor:pointer;
+  transition:border-color .15s ease, color .15s ease, background .15s ease;
+}
+.view-tab:hover{color:var(--text);border-color:var(--hour-color, var(--line));}
+.view-tab.is-active{
+  color:#231502;
+  background:linear-gradient(135deg, var(--amber), #ff9d5c);
+  border-color:transparent;
+  font-weight:700;
+}
+.view-tab:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+
+.view-panel{display:block;position:relative;}
+.view-panel[hidden]{display:none;}
+
+.scroll-hint{
+  margin:10px 2px 0;
+  font-family:var(--font-mono);
+  font-size:10px;
+  color:var(--text-muted);
+  text-align:center;
+  opacity:.7;
+}
+
+/* ---------- Timeline ---------- */
+/* .timeline-scroll est le SEUL élément qui scrolle horizontalement :
+   il contient .timeline-inner (axe des heures + boîtes) qui bouge
+   d'un seul bloc. Pas de colonne "figée" façon tableur : tout défile
+   ensemble, c'est plus simple et ça évite les bugs d'affichage. */
+.timeline-scroll{
+  position:relative;
+  overflow-x:auto;
+  overflow-y:hidden;
+  padding-bottom:6px;
+  -webkit-overflow-scrolling:touch;
+}
+.timeline-scroll::-webkit-scrollbar{height:8px;}
+.timeline-scroll::-webkit-scrollbar-track{background:var(--bg-panel-2);border-radius:4px;}
+.timeline-scroll::-webkit-scrollbar-thumb{background:var(--line);border-radius:4px;}
+.timeline-scroll::-webkit-scrollbar-thumb:hover{background:var(--amber);}
+
+.timeline-inner{
+  position:relative;
+  display:flex;
+  gap:14px;
+  width:max-content;
+  min-width:100%;
+}
+
+.hour-axis{
+  flex:0 0 52px;
+  position:relative;
+}
+
+.hour-mark{
+  position:absolute;
+  left:0;
+  right:0;
+  font-family:var(--font-mono);
+  font-size:12px;
+  color:var(--text-muted);
+  transform:translateY(-50%);
+}
+
+.tracks{
+  flex:0 0 auto;
+  position:relative;
+  border-left:1px solid var(--line);
+}
+
+.gridline{
+  position:absolute;
+  left:0;
+  right:0;
+  border-top:1px solid var(--line-soft);
+}
+.gridline.hour{border-top-color:var(--line);}
+
+.now-line{
+  position:absolute;
+  left:0;
+  right:0;
+  border-top:2px solid var(--amber);
+  z-index:5;
+  box-shadow:0 0 8px rgba(255,193,104,.6);
+}
+.now-line::before{
+  content:"MAINTENANT";
+  position:absolute;
+  left:8px;
+  top:-9px;
+  background:var(--amber);
+  color:#231502;
+  font-family:var(--font-mono);
+  font-size:9px;
+  font-weight:700;
+  letter-spacing:0.06em;
+  padding:1px 6px;
+  border-radius:3px;
+}
+
+.priority-band{
+  position:absolute;
+  left:0;
+  right:0;
+  background:var(--coral-dim);
+  border-top:1px solid var(--coral);
+  border-bottom:1px solid var(--coral);
+  z-index:1;
+}
+.priority-band .pb-label{
+  position:absolute;
+  right:10px;
+  top:4px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--coral);
+  max-width:60%;
+  text-align:right;
+}
+
+.person-row{
+  position:absolute;
+  min-height:44px;
+  background:var(--bg-panel-2);
+  border:1px solid var(--line);
+  border-left:3px solid var(--hour-color, var(--line));
+  border-radius:8px;
+  padding:6px 12px;
+  display:flex;
+  align-items:center;
+  gap:10px;
+  z-index:3;
+  cursor:default;
+  transition:opacity .15s ease, border-color .15s ease, transform .12s ease, box-shadow .15s ease, background .15s ease;
+}
+
+.person-row:hover{
+  background:#232D3B;
+  border-color:var(--hour-color, var(--line));
+  transform:translateX(2px);
+  box-shadow:0 6px 16px -8px rgba(0,0,0,.5);
+}
+
+.person-row.is-next{
+  border-color:var(--amber);
+  border-left-color:var(--amber);
+  box-shadow:0 0 0 1px var(--amber) inset;
+  animation:pulse-amber 2s ease-in-out infinite;
+}
+.person-row.is-next:hover{box-shadow:0 0 0 1px var(--amber) inset, 0 6px 16px -8px rgba(0,0,0,.5);}
+
+@keyframes pulse-amber{
+  0%,100%{box-shadow:0 0 0 1px var(--amber) inset;}
+  50%{box-shadow:0 0 0 1px var(--amber) inset, 0 0 16px 0 rgba(255,193,104,.4);}
+}
+
+.person-row.is-priority{
+  background:linear-gradient(90deg, rgba(255,107,122,.08), transparent 40%), var(--bg-panel-2);
+}
+
+.person-row .chk{
+  flex:0 0 auto;
+  width:22px;
+  height:22px;
+  border-radius:6px;
+  border:1px solid var(--line);
+  background:transparent;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:var(--teal);
+  font-size:14px;
+  font-weight:700;
+  transition:border-color .15s ease, background .15s ease, transform .1s ease;
+}
+.person-row .chk:hover{
+  border-color:var(--teal);
+  background:var(--teal-dim);
+  transform:scale(1.08);
+}
+.person-row .chk:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+
+.hour-chip{
+  flex:0 0 auto;
+  font-family:var(--font-mono);
+  font-size:10px;
+  font-weight:700;
+  color:var(--hour-color);
+  background:color-mix(in srgb, var(--hour-color) 18%, transparent);
+  border:1px solid color-mix(in srgb, var(--hour-color) 45%, transparent);
+  padding:3px 7px;
+  border-radius:5px;
+  white-space:nowrap;
+}
+
+.person-info{
+  min-width:0;
+  flex:1;
+}
+
+.person-pseudo{
+  font-family:var(--font-display);
+  font-size:15px;
+  font-weight:700;
+  line-height:1.2;
+}
+
+.person-pseudo .star{
+  color:var(--coral);
+  font-size:12px;
+}
+
+.person-time{
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--text-muted);
+}
+
+.person-comment{
+  font-size:12px;
+  color:var(--text-muted);
+  margin-top:2px;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  white-space:nowrap;
+}
+
+/* ---------- Vue liste ---------- */
+.list-items{
+  display:flex;
+  flex-direction:column;
+  gap:8px;
+}
+
+.list-item{
+  display:flex;
+  align-items:flex-start;
+  gap:12px;
+  background:var(--bg-panel-2);
+  border:1px solid var(--line);
+  border-radius:8px;
+  padding:10px 14px;
+  transition:opacity .2s ease, background .15s ease, border-color .15s ease;
+}
+.list-item:hover{background:#232D3B;}
+
+.list-item.is-done{
+  opacity:.4;
+}
+.list-item.is-done:hover{opacity:.65;}
+.list-item.is-done .chk{background:var(--teal-dim);border-color:var(--teal);color:var(--teal);}
+
+.list-info{
+  min-width:0;
+  flex:1;
+}
+
+.list-top-row{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:10px;
+}
+
+.list-top-row .hour-chip{
+  color:var(--hour-color);
+  background:color-mix(in srgb, var(--hour-color) 18%, transparent);
+  border:1px solid color-mix(in srgb, var(--hour-color) 45%, transparent);
+}
+
+.list-comment{
+  white-space:normal;
+  margin-top:4px;
+}
+
+/* ---------- Footer ---------- */
+.footnote{
+  margin-top:20px;
+  font-family:var(--font-mono);
+  font-size:11px;
+  color:var(--text-muted);
+  text-align:center;
+}
+.footnote code{
+  color:var(--violet);
+  background:rgba(185,140,255,.1);
+  padding:2px 5px;
+  border-radius:4px;
+}
+
+/* ---------- Responsive ---------- */
+@media (max-width:600px){
+  .next-name{font-size:26px;}
+  .person-pseudo{font-size:13px;}
+  .hour-axis{flex-basis:40px;}
+  body{padding:16px 10px 60px;}
+  .view-tab{padding:7px 12px;font-size:11px;}
+}
+
+@media (prefers-reduced-motion: reduce){
+  .person-row.is-next{animation:none;}
+  .person-row, .next-check, .reset-btn, .chk{transition:none;}
+}
