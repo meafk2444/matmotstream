@@ -33,21 +33,21 @@ window.SCHEDULE_DATA = {
        comment  : (optionnel) note libre affichée sous son pseudo
      ------------------------------------------------------------------- */
   people: [
-    { pseudo: "Fred4555",           hours: ["20","21","22","23","00"], priority: [""], comment: "" },
-    { pseudo: "ZackShrek2",         hours: ["20","21"],                priority: [""], comment: "" },
-    { pseudo: "pikanimes",          hours: ["21","22","23","00"],      priority: [""], comment: "" },
-    { pseudo: "Ac3_R4v3n",          hours: ["20","21","22"],           priority: [""], comment: "" },
-    { pseudo: "pikachugraga",       hours: ["20","21","22"],           priority: [""], comment: "" },
-    { pseudo: "honeythehivezsilk",  hours: ["20"],                     priority: [""], comment: "" },
-    { pseudo: "Hubbie_21",          hours: ["22","23","00"],           priority: [""], comment: "" },
-    { pseudo: "Billyboby23",        hours: ["20"],                     priority: [""], comment: "" },
-    { pseudo: "Mabielle_fx",        hours: ["20","21"],                priority: [""], comment: "" },
-    { pseudo: "uergap",             hours: ["20"],                     priority: [""], comment: "" },
-    { pseudo: "Tdwhinybitch",       hours: ["20"],                     priority: [""], comment: "" },
-    { pseudo: "trenchant0419",      hours: ["23","00"],                priority: [""], comment: "" },
-    { pseudo: "Blong_NCS",          hours: ["20"],                     priority: [""], comment: "" },
-    { pseudo: "im_kinoa22",         hours: ["21","22","23"],           priority: [""], comment: "" },
-    { pseudo: "seniorpuel12345",    hours: ["20"],                     priority: [""], comment: "" }
+    { pseudo: "Fred4555",           hours: ["20","21","22","23","00"], priority: [], comment: "" },
+    { pseudo: "ZackShrek2",         hours: ["20","21"],                priority: [], comment: "" },
+    { pseudo: "pikanimes",          hours: ["21","22","23","00"],      priority: [], comment: "" },
+    { pseudo: "Ac3_R4v3n",          hours: ["20","21","22"],           priority: [], comment: "" },
+    { pseudo: "pikachugraga",       hours: ["20","21","22"],           priority: [], comment: "" },
+    { pseudo: "honeythehivezsilk",  hours: ["20"],                     priority: [], comment: "" },
+    { pseudo: "Hubbie_21",          hours: ["22","23","00"],           priority: [], comment: "" },
+    { pseudo: "Billyboby23",        hours: ["20"],                     priority: [], comment: "" },
+    { pseudo: "Mabielle_fx",        hours: ["20","21"],                priority: [], comment: "" },
+    { pseudo: "uergap",             hours: ["20"],                     priority: [], comment: "" },
+    { pseudo: "Tdwhinybitch",       hours: ["20"],                     priority: [], comment: "" },
+    { pseudo: "trenchant0419",      hours: ["23","00"],                priority: [], comment: "" },
+    { pseudo: "Blong_NCS",          hours: ["20"],                     priority: [], comment: "" },
+    { pseudo: "im_kinoa22",         hours: ["21","22","23"],           priority: [], comment: "" },
+    { pseudo: "seniorpuel12345",    hours: ["20"],                     priority: [], comment: "" }
   ],
 
   /* -------------------------------------------------------------------
