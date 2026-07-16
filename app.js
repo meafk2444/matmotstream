@@ -319,7 +319,7 @@
       info.innerHTML =
         '<div class="person-pseudo">' + escapeHtml(inst.pseudo) + (inst.isPriority ? ' <span class="star">★</span>' : '') + '</div>' +
         '<div class="person-time">Entre ' + escapeHtml(inst.startLabel) + ' et ' + escapeHtml(inst.endLabel) +
-        (inst.slotCount > 1 ? ' · ' + inst.slotCount + ' créneaux' : '') + '</div>' +
+        (inst.slotCount > 1 ? ' · ' + inst.slotCount + ' heures' : '') + '</div>' +
         (inst.comment ? '<div class="person-comment">' + escapeHtml(inst.comment) + '</div>' : '');
 
       row.appendChild(chip);
