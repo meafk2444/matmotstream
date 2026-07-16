@@ -33,7 +33,7 @@ window.SCHEDULE_DATA = {
        comment  : (optionnel) note libre affichée sous son pseudo
      ------------------------------------------------------------------- */
   people: [
-    { pseudo: "Fred4555",           hours: ["20","21","22","23","00"], priority: ["00"], comment: "" },
+    { pseudo: "Fred4555",           hours: ["20","21","22","23","00"], priority: ["23"], comment: "" },
     { pseudo: "ZackShrek2",         hours: ["20","21"],                priority: ["21"], comment: "" },
     { pseudo: "pikanimes",          hours: ["21","22","23","00"],      priority: ["00"], comment: "" },
     { pseudo: "Ac3_R4v3n",          hours: ["20","21","22"],           priority: ["22"], comment: "" },
