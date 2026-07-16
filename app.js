@@ -119,14 +119,9 @@
   // proche, celles marquées "priority" pour cette heure passent avant.
   function computeNext(instances) {
     var now = nowInRangeMinutes();
-    var candidates = {}; // pseudo -> instance la plus proche non cochée
-    instances.forEach(function (inst) {
-      if (doneSet[inst.pseudo]) return;
-      if (!(inst.pseudo in candidates) || inst.start < candidates[inst.pseudo].start) {
-        candidates[inst.pseudo] = inst;
-      }
-    });
-    var arr = Object.keys(candidates).map(function (k) { return candidates[k]; });
+    var arr = instances.filter(function (inst) {
+  return !doneSet[inst.pseudo];
+});
     if (arr.length === 0) return null;
 
     function pickBest(list) {
@@ -251,7 +246,7 @@
       row.style.setProperty("--hour-color", hourColor);
       if (doneSet[inst.pseudo]) row.classList.add("is-done");
       if (inst.isPriority) row.classList.add("is-priority");
-      if (nextInst && nextInst.pseudo === inst.pseudo && nextInst.start === inst.start) {
+      if (nextInst === inst) {
         row.classList.add("is-next");
       }
       row.style.top = top + "px";
