@@ -355,12 +355,14 @@ body{
   border:1px solid var(--line);
   border-left:3px solid var(--hour-color, var(--line));
   border-radius:8px;
-  padding:6px 12px;
+  padding:10px 34px 10px 12px;
   display:flex;
-  align-items:center;
-  gap:10px;
+  flex-direction:column;
+  justify-content:flex-start;
+  gap:4px;
   z-index:3;
   cursor:default;
+  overflow:hidden;
   transition:opacity .15s ease, border-color .15s ease, transform .12s ease, box-shadow .15s ease, background .15s ease;
 }
 
@@ -389,12 +391,15 @@ body{
 }
 
 .person-row .chk{
+  position:absolute;
+  top:8px;
+  right:8px;
   flex:0 0 auto;
   width:22px;
   height:22px;
   border-radius:6px;
   border:1px solid var(--line);
-  background:transparent;
+  background:var(--bg-panel);
   cursor:pointer;
   display:flex;
   align-items:center;
@@ -433,12 +438,21 @@ body{
   font-family:var(--font-display);
   font-size:15px;
   font-weight:700;
-  line-height:1.2;
+  line-height:1.25;
+  overflow-wrap:anywhere;
+  word-break:break-word;
 }
 
 .person-pseudo .star{
   color:var(--coral);
   font-size:12px;
+}
+
+.person-meta{
+  display:flex;
+  align-items:center;
+  flex-wrap:wrap;
+  gap:6px 8px;
 }
 
 .person-time{
@@ -451,9 +465,7 @@ body{
   font-size:12px;
   color:var(--text-muted);
   margin-top:2px;
-  overflow:hidden;
-  text-overflow:ellipsis;
-  white-space:nowrap;
+  overflow-wrap:anywhere;
 }
 
 /* ---------- Vue liste ---------- */
@@ -471,9 +483,13 @@ body{
   border:1px solid var(--line);
   border-radius:8px;
   padding:10px 14px;
+  cursor:pointer;
+  user-select:none;
   transition:opacity .2s ease, background .15s ease, border-color .15s ease;
 }
 .list-item:hover{background:#232D3B;}
+.list-item:focus-visible{outline:2px solid var(--amber);outline-offset:2px;}
+.list-item:active{transform:translateY(1px);}
 
 .list-item.is-done{
   opacity:.4;
